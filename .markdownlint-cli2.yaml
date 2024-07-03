@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/main/schema/markdownlint-cli2-config-schema.json
+
+# https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.yaml
+# https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+# https://github.com/DavidAnson/markdownlint-cli2/blob/main/test/markdownlint-cli2-yaml-example/.markdownlint-cli2.yaml
+# https://github.com/DavidAnson/markdownlint/blob/main/README.md#rules--aliases
+
+config:
+  default: true
+  line-length:
+    line_length: 350
+customRules:
+  - markdownlint-rule-relative-links
+  - '@github/markdownlint-github'
+fix: true
+ignores:
+  - CHANGELOG.md
+  - LICENSE.md
+noInlineConfig: true
+noProgress: true
+showFound: true
+outputFormatters:
+  - [markdownlint-cli2-formatter-pretty, appendLink: true]

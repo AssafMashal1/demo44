@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Release
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: false # ${{ github.event_name == 'pull_request' }}
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: ${{ !startsWith(github.event.head_commit.message ,'chore(release):') }}
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Release
+        uses: DynamicYield/action-semrel@98ddc59f2894785947961217863011420da9452e # 1.6.0
+        with:
+          ghcr-token: ${{ secrets.GH_PAT_RO }}
+          github-token: ${{ secrets.GH_PAT_SEM_REL }}
