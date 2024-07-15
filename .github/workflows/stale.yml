@@ -41,7 +41,7 @@ jobs:
           close-issue-message: >
             This issue was closed because it has been stalled for 6 days with no activity. You can reopen it by clicking on `Reopen issue`.
       - name: Delete stale branches
-        uses: fpicalausa/remove-stale-branches@f442973cf98f499d7d13c7e274c62d87fbaedc39 # v2.0.1
+        uses: fpicalausa/remove-stale-branches@8d7c410eb145f6f2daf40f2f7a8a249515a40f18 # v2.1.0
         with:
           dry-run: ${{ github.event_name == 'pull_request' }}
           days-before-branch-stale: 14
